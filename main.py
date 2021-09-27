@@ -1,27 +1,15 @@
-from terminaltables import SingleTable
+import os
+
+from dotenv import load_dotenv
 
 from get_hh_salaries import get_hh_vacancies, get_hh_summary_vacancies
 from get_sj_salaries import get_sj_vacancies, get_sj_summary_vacancies
-
-
-def get_salaries_table(table):
-    printed_table = SingleTable(table)
-    return printed_table
-
-
-def print_table(title, vacancies):
-    final_table = [['Язык', 'Всего вакансий', 'Обработано', 'Средняя ЗП']]
-    for language in vacancies:
-        final_table.append([language,
-                            vacancies[language]['vacancies_found'],
-                            vacancies[language]['vacancies_processed'],
-                            vacancies[language]['average_salary']
-                            ])
-    printed_table = SingleTable(final_table, title=title)
-    print(printed_table.table)
+from general_functions import print_table
 
 
 def main():
+    load_dotenv()
+    sj_key = os.getenv('SJ_KEY')
     prog_languages = [
         'JavaScript',
         'Java',
@@ -40,7 +28,7 @@ def main():
 
     for language in prog_languages:
         hh_vacancies_list = get_hh_vacancies(language)
-        sj_vacancies_list = get_sj_vacancies(language)
+        sj_vacancies_list = get_sj_vacancies(language, sj_key)
         hh_vacancies_summary = get_hh_summary_vacancies(hh_vacancies_list)
         sj_vacansies_summary = get_sj_summary_vacancies(sj_vacancies_list)
         hh_languages_salary[language] = hh_vacancies_summary
