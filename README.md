@@ -1,9 +1,9 @@
-# Analyzer developers salary
+# Developers salary analyzer 
 Данный скрипт позволяет получить информацию о средней зарплате на основе данных сайтов [hh.ru](https://hh.ru) 
 и [superjob](https://superjob.ru).
 
 # Как запустить
-Python 3 должен быть установлен. Используйте команду pip для установки зависимостей
+Python 3 должен быть установлен. Используйте команду pip для установки зависимостей:
 
 ```
 pip install -r requirements.txt
@@ -14,16 +14,16 @@ pip install -r requirements.txt
 
 Пример 
 ```
-SJ_KEY = 'v3.r.134950175.096fd8e380b90ba4c12093d1988f82e0db91be66.bc679cd162966a5212348787564'
+SJ_KEY='v3.r.134950175.096fd8e380b90ba4c12093d1988f82e0db91be66.bc679cd162966a5212348787564'
 ```
 ### Как получить ключ
 
-Для получения ключа необходимо зарегистрироваться приложение на сайте [API SuperJOB](https://api.superjob.ru/register)
-Полученно значение указано в поле ```Secret key```
+Для получения ключа необходимо зарегистрировать приложение на сайте [API SuperJOB](https://api.superjob.ru/register)
+Полученное значение указано в поле ```Secret key```.
 
 ### Запуск
 
-```buildoutcfg
+```
 $ python main.py
 
 # Результат
@@ -66,6 +66,6 @@ $ python main.py
 ```
 
 ### Цель проект
-Создан в рамках изучения API Python
+Создан в рамках изучения API Python.
 
 
