@@ -1,17 +1,18 @@
 import requests
 
+from general_functions import predict_rub_salary
 
 def get_hh_vacancies(language):
     url = 'https://api.hh.ru/vacancies/'
     pages = 5
     page = 0
     vacancies_pages = []
-
+    moscow_city_id = 1
     while page < pages:
         params = {
             'text': language,
             'page': page,
-            'area': 1,
+            'area': moscow_city_id,
             'period': 30,
         }
 
@@ -33,9 +34,10 @@ def get_hh_summary_vacancies(vacancies_pages):
         vacancies_found = vacancies_page['found']
 
     for vacancy in vacancies_list:
-        salary = predict_rub_salary(vacancy)
-        if salary:
-            salaries.append(salary)
+        if vacancy['salary'] is not None and vacancy['salary']['currency'] == 'RUR':
+            salary = predict_rub_salary(vacancy['salary']['from'], vacancy['salary']['to'])
+            if salary:
+                salaries.append(salary)
     try:
         average_salary = int((sum(salaries) / len(salaries)))
     except ZeroDivisionError:
@@ -46,16 +48,3 @@ def get_hh_summary_vacancies(vacancies_pages):
     vacancies_summary['average_salary'] = int(average_salary)
 
     return vacancies_summary
-
-
-def predict_rub_salary(vacancy):
-    if vacancy['salary'] is None:
-        return None
-    elif vacancy['salary']['currency'] != 'RUR':
-        return None
-    elif vacancy['salary']['from'] and vacancy['salary']['to']:
-        return (vacancy['salary']['from'] + vacancy['salary']['to']) / 2
-    elif vacancy['salary']['from'] and not vacancy['salary']['to']:
-        return vacancy['salary']['from'] * 1.2
-    elif vacancy['salary']['to'] and not vacancy['salary']['from']:
-        return vacancy['salary']['to'] * 0.8
