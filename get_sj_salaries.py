@@ -41,7 +41,10 @@ def get_sj_summary_vacancies(vacancies_pages):
 
     for vacancy in vacancies_list:
         if vacancy['currency'] == 'rub':
-            salary = predict_rub_salary(vacancy['payment_from'], vacancy['payment_to'])
+            salary = predict_rub_salary(
+                vacancy['payment_from'],
+                vacancy['payment_to']
+            )
             if salary:
                 salaries.append(salary)
     try:
