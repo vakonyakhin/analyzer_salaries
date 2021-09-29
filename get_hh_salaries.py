@@ -2,6 +2,7 @@ import requests
 
 from general_functions import predict_rub_salary
 
+
 def get_hh_vacancies(language):
     url = 'https://api.hh.ru/vacancies/'
     pages = 5
@@ -34,8 +35,12 @@ def get_hh_summary_vacancies(vacancies_pages):
         vacancies_found = vacancies_page['found']
 
     for vacancy in vacancies_list:
-        if vacancy['salary'] is not None and vacancy['salary']['currency'] == 'RUR':
-            salary = predict_rub_salary(vacancy['salary']['from'], vacancy['salary']['to'])
+        if vacancy['salary'] is not None \
+              and vacancy['salary']['currency'] == 'RUR':
+            salary = predict_rub_salary(
+                vacancy['salary']['from'],
+                vacancy['salary']['to']
+            )
             if salary:
                 salaries.append(salary)
     try:
