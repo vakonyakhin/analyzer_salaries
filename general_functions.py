@@ -3,11 +3,11 @@ from terminaltables import SingleTable
 
 def print_table(title, vacancies):
     final_table = [['Язык', 'Всего вакансий', 'Обработано', 'Средняя ЗП']]
-    for language in vacancies:
+    for language, summary_vacancies_value in vacancies.items():
         final_table.append([language,
-                            vacancies[language]['vacancies_found'],
-                            vacancies[language]['vacancies_processed'],
-                            vacancies[language]['average_salary']
+                            summary_vacancies_value['vacancies_found'],
+                            summary_vacancies_value['vacancies_processed'],
+                            summary_vacancies_value['average_salary']
                             ])
     printed_table = SingleTable(final_table, title=title)
     print(printed_table.table)
