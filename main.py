@@ -10,7 +10,7 @@ from general_functions import print_table
 def main():
     load_dotenv()
     sj_key = os.getenv('SJ_KEY')
-    prog_languages = [
+    programming_languages = [
         'JavaScript',
         'Java',
         'Python',
@@ -26,13 +26,13 @@ def main():
     hh_languages_salary = {}
     sj_languages_salary = {}
 
-    for language in prog_languages:
+    for language in programming_languages:
         hh_vacancies_list = get_hh_vacancies(language)
         sj_vacancies_list = get_sj_vacancies(language, sj_key)
         hh_vacancies_summary = get_hh_summary_vacancies(hh_vacancies_list)
-        sj_vacansies_summary = get_sj_summary_vacancies(sj_vacancies_list)
+        sj_vacancies_summary = get_sj_summary_vacancies(sj_vacancies_list)
         hh_languages_salary[language] = hh_vacancies_summary
-        sj_languages_salary[language] = sj_vacansies_summary
+        sj_languages_salary[language] = sj_vacancies_summary
 
     print_table('HeadHunter', hh_languages_salary)
     print_table('SuperJob', sj_languages_salary)
