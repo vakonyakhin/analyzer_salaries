@@ -9,13 +9,14 @@ def get_hh_vacancies(language):
     page = 0
     vacancies_pages = []
     moscow_city_id = 1
+    params = {
+        'text': language,
+        'page': page,
+        'area': moscow_city_id,
+        'period': 30,
+    }
     while page < pages:
-        params = {
-            'text': language,
-            'page': page,
-            'area': moscow_city_id,
-            'period': 30,
-        }
+
 
         response = requests.get(url, params=params)
         response.raise_for_status()
