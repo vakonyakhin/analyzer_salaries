@@ -9,17 +9,18 @@ def get_sj_vacancies(language, api_key):
     header = {
         'X-Api-App-Id': api_key,
     }
-
     moscow_city_id = 4
     it_vacancies_catalog_id = 48
+    params = {
+        'town': moscow_city_id,
+        'count': 100,
+        'page': 0,
+        'keyword': language,
+        'catalogues': it_vacancies_catalog_id,
+    }
+
     while True:
-        params = {
-            'town': moscow_city_id,
-            'count': 100,
-            'page': 0,
-            'keyword': language,
-            'catalogues': it_vacancies_catalog_id,
-        }
+
         response = requests.get(url, params=params, headers=header)
         response.raise_for_status()
         vacancies_pages.append(response.json())
