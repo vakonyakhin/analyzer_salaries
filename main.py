@@ -29,10 +29,10 @@ def main():
     for language in programming_languages:
         hh_vacancies_list = get_hh_vacancies(language)
         sj_vacancies_list = get_sj_vacancies(language, sj_key)
-        hh_vacancies_summary = get_hh_summary_vacancies(hh_vacancies_list)
-        sj_vacancies_summary = get_sj_summary_vacancies(sj_vacancies_list)
-        hh_languages_salary[language] = hh_vacancies_summary
-        sj_languages_salary[language] = sj_vacancies_summary
+        hh_vacancies_statistic = get_hh_summary_vacancies(hh_vacancies_list)
+        sj_vacancies_statistic = get_sj_summary_vacancies(sj_vacancies_list)
+        hh_languages_salary[language] = hh_vacancies_statistic
+        sj_languages_salary[language] = sj_vacancies_statistic
 
     print_table('HeadHunter', hh_languages_salary)
     print_table('SuperJob', sj_languages_salary)
