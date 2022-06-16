@@ -32,9 +32,9 @@ def get_sj_vacancies(language, api_key):
     return vacancies_pages
 
 
-def get_sj_summary_vacancies(vacancies_pages):
+def get_sj_total_vacancies(vacancies_pages):
     salaries = []
-    vacancies_summary = {}
+    vacancies_total = {}
     vacancies_list = []
     for vacancies_page in vacancies_pages:
         vacancies_list.extend(vacancies_page['objects'])
@@ -54,8 +54,8 @@ def get_sj_summary_vacancies(vacancies_pages):
         average_salary = 0
 
     vacancies_processed = len(salaries)
-    vacancies_summary['vacancies_found'] = vacancies_found
-    vacancies_summary['vacancies_processed'] = vacancies_processed
-    vacancies_summary['average_salary'] = average_salary
+    vacancies_total['vacancies_found'] = vacancies_found
+    vacancies_total['vacancies_processed'] = vacancies_processed
+    vacancies_total['average_salary'] = average_salary
 
-    return vacancies_summary
+    return vacancies_total
