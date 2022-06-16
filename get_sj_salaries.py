@@ -56,6 +56,6 @@ def get_sj_summary_vacancies(vacancies_pages):
     vacancies_processed = len(salaries)
     vacancies_summary['vacancies_found'] = vacancies_found
     vacancies_summary['vacancies_processed'] = vacancies_processed
-    vacancies_summary['average_salary'] = int(average_salary)
+    vacancies_summary['average_salary'] = average_salary
 
     return vacancies_summary
