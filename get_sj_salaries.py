@@ -4,7 +4,7 @@ from general_functions import predict_rub_salary
 
 
 def get_sj_vacancies(language, api_key):
-    vacancies_pages = []
+    vacancy_pages = []
     url = 'https://api.superjob.ru/2.0/vacancies'
     header = {
         'X-Api-App-Id': api_key,
@@ -23,13 +23,13 @@ def get_sj_vacancies(language, api_key):
 
         response = requests.get(url, params=params, headers=header)
         response.raise_for_status()
-        vacancies_pages.append(response.json())
+        vacancy_pages.append(response.json())
         more_pages = response.json()['more']
 
         if not more_pages:
             break
 
-    return vacancies_pages
+    return vacancy_pages
 
 
 def get_sj_total_vacancies(vacancies_pages):

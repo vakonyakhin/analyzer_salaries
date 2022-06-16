@@ -7,7 +7,7 @@ def get_hh_vacancies(language):
     url = 'https://api.hh.ru/vacancies/'
     pages = 5
     page = 0
-    vacancies_pages = []
+    vacancy_pages = []
     moscow_city_id = 1
     params = {
         'text': language,
@@ -20,9 +20,9 @@ def get_hh_vacancies(language):
         response.raise_for_status()
         page += 1
         pages = response.json()['pages']
-        vacancies_pages.append(response.json())
+        vacancy_pages.append(response.json())
 
-    return vacancies_pages
+    return vacancy_pages
 
 
 def get_hh_total_vacancies(vacancies_pages):
