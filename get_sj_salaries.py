@@ -32,7 +32,7 @@ def get_sj_vacancies(language, api_key):
     return vacancy_pages
 
 
-def get_sj_total_vacancies(vacancies_pages):
+def get_sj_total_statistic(vacancies_pages):
     salaries = []
     vacancies_total = {}
     vacancies_list = []
