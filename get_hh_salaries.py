@@ -18,9 +18,10 @@ def get_hh_vacancies(language):
         params['page'] = page
         response = requests.get(url, params=params)
         response.raise_for_status()
+        response_json = response.json()
         page += 1
-        pages = response.json()['pages']
-        vacancy_pages.append(response.json())
+        pages = response_json['pages']
+        vacancy_pages.append(response_json)
 
     return vacancy_pages
 
