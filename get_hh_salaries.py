@@ -25,7 +25,7 @@ def get_hh_vacancies(language):
     return vacancy_pages
 
 
-def get_hh_total_vacancies(vacancies_pages):
+def get_hh_total_statistic(vacancies_pages):
     salaries = []
     vacancies_total = {}
     vacancies_list = []
