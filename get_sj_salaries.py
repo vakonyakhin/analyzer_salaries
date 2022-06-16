@@ -49,7 +49,7 @@ def get_sj_summary_vacancies(vacancies_pages):
             if salary:
                 salaries.append(salary)
     try:
-        average_salary = int((sum(salaries) / len(salaries)))
+        average_salary = sum(salaries) / len(salaries)
     except ZeroDivisionError:
         average_salary = 0
 
