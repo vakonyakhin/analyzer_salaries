@@ -2,8 +2,8 @@ import os
 
 from dotenv import load_dotenv
 
-from get_hh_salaries import get_hh_vacancies, get_hh_total_vacancies
-from get_sj_salaries import get_sj_vacancies, get_sj_total_vacancies
+from get_hh_salaries import get_hh_vacancies, get_hh_total_statistic
+from get_sj_salaries import get_sj_vacancies, get_sj_total_statistic
 from general_functions import print_table
 
 
@@ -29,8 +29,8 @@ def main():
     for language in programming_languages:
         hh_vacancies_list = get_hh_vacancies(language)
         sj_vacancies_list = get_sj_vacancies(language, sj_key)
-        hh_vacancies_statistic = get_hh_total_vacancies(hh_vacancies_list)
-        sj_vacancies_statistic = get_sj_total_vacancies(sj_vacancies_list)
+        hh_vacancies_statistic = get_hh_total_statistic(hh_vacancies_list)
+        sj_vacancies_statistic = get_sj_total_statistic(sj_vacancies_list)
         hh_languages_salary[language] = hh_vacancies_statistic
         sj_languages_salary[language] = sj_vacancies_statistic
 
