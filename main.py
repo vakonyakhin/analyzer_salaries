@@ -27,10 +27,10 @@ def main():
     sj_languages_salary = {}
 
     for language in programming_languages:
-        hh_vacancies, hh_found_vacancies = get_hh_vacancies(language)
-        sj_vacancies, sj_found_vacancies = get_sj_vacancies(language, sj_key)
-        hh_vacancies_statistic = get_hh_total_statistic(hh_vacancies, hh_found_vacancies)
-        sj_vacancies_statistic = get_sj_total_statistic(sj_vacancies, sj_found_vacancies)
+        hh_vacancies, hh_vacancies_quantity = get_hh_vacancies(language)
+        sj_vacancies, sj_vacancies_quantity = get_sj_vacancies(language, sj_key)
+        hh_vacancies_statistic = get_hh_total_statistic(hh_vacancies, hh_vacancies_quantity)
+        sj_vacancies_statistic = get_sj_total_statistic(sj_vacancies, sj_vacancies_quantity)
         hh_languages_salary[language] = hh_vacancies_statistic
         sj_languages_salary[language] = sj_vacancies_statistic
 

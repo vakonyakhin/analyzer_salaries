@@ -33,11 +33,11 @@ def get_sj_vacancies(language, api_key):
             pages_number += 1
         else:
             break
-    found_vacancies = response_json['total']
-    return vacancy_pages, found_vacancies
+    vacancies_quantity = response_json['total']
+    return vacancy_pages, vacancies_quantity
 
 
-def get_sj_total_statistic(vacancies_pages, found_vacancies):
+def get_sj_total_statistic(vacancies_pages, vacancies_quantity):
     salaries = []
     vacancies_total = {}
     vacancies_list = []
@@ -58,7 +58,7 @@ def get_sj_total_statistic(vacancies_pages, found_vacancies):
         average_salary = 0
 
     vacancies_processed = len(salaries)
-    vacancies_total['vacancies_found'] = found_vacancies
+    vacancies_total['vacancies_found'] = vacancies_quantity
     vacancies_total['vacancies_processed'] = vacancies_processed
     vacancies_total['average_salary'] = average_salary
 
