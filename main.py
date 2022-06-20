@@ -11,7 +11,7 @@ def main():
     load_dotenv()
     sj_key = os.getenv('SJ_KEY')
     programming_languages = [
-        'JavaScript',
+        'Javascript',
         'Java',
         'Python',
         'Ruby',
@@ -27,10 +27,10 @@ def main():
     sj_languages_salary = {}
 
     for language in programming_languages:
-        hh_vacancies_list = get_hh_vacancies(language)
-        sj_vacancies_list = get_sj_vacancies(language, sj_key)
-        hh_vacancies_statistic = get_hh_total_statistic(hh_vacancies_list)
-        sj_vacancies_statistic = get_sj_total_statistic(sj_vacancies_list)
+        hh_vacancies_list, hh_found_vacancies = get_hh_vacancies(language)
+        sj_vacancies_list, sj_found_vacancies = get_sj_vacancies(language, sj_key)
+        hh_vacancies_statistic = get_hh_total_statistic(hh_vacancies_list, hh_found_vacancies)
+        sj_vacancies_statistic = get_sj_total_statistic(sj_vacancies_list, sj_found_vacancies)
         hh_languages_salary[language] = hh_vacancies_statistic
         sj_languages_salary[language] = sj_vacancies_statistic
 
