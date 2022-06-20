@@ -22,17 +22,17 @@ def get_hh_vacancies(language):
         page += 1
         pages = response_json['pages']
         vacancy_pages.append(response_json)
+    found_vacancies = response_json['found']
 
-    return vacancy_pages
+    return vacancy_pages, found_vacancies
 
 
-def get_hh_total_statistic(vacancies_pages):
+def get_hh_total_statistic(vacancies_pages, found_vacancies):
     salaries = []
     vacancies_total = {}
     vacancies_list = []
     for vacancies_page in vacancies_pages:
         vacancies_list.extend(vacancies_page['items'])
-        vacancies_found = vacancies_page['found']
 
     for vacancy in vacancies_list:
         if vacancy['salary'] is not None \
@@ -48,7 +48,7 @@ def get_hh_total_statistic(vacancies_pages):
     except ZeroDivisionError:
         average_salary = 0
     vacancies_processed = len(salaries)
-    vacancies_total['vacancies_found'] = vacancies_found
+    vacancies_total['vacancies_found'] = found_vacancies
     vacancies_total['vacancies_processed'] = vacancies_processed
     vacancies_total['average_salary'] = average_salary
 
