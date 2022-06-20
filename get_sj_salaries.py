@@ -26,23 +26,23 @@ def get_sj_vacancies(language, api_key):
         response.raise_for_status()
         response_json = response.json()
         vacancy_pages.append(response_json)
+        print(response_json['total'], response_json['more'])
 
         if response_json['more']:
             page += 1
             pages_number += 1
         else:
             break
+    found_vacancies = response_json['total']
+    return vacancy_pages, found_vacancies
 
-    return vacancy_pages
 
-
-def get_sj_total_statistic(vacancies_pages):
+def get_sj_total_statistic(vacancies_pages, found_vacancies):
     salaries = []
     vacancies_total = {}
     vacancies_list = []
     for vacancies_page in vacancies_pages:
         vacancies_list.extend(vacancies_page['objects'])
-        vacancies_found = vacancies_page['total']
 
     for vacancy in vacancies_list:
         if vacancy['currency'] == 'rub':
@@ -58,7 +58,7 @@ def get_sj_total_statistic(vacancies_pages):
         average_salary = 0
 
     vacancies_processed = len(salaries)
-    vacancies_total['vacancies_found'] = vacancies_found
+    vacancies_total['vacancies_found'] = found_vacancies
     vacancies_total['vacancies_processed'] = vacancies_processed
     vacancies_total['average_salary'] = average_salary
 
