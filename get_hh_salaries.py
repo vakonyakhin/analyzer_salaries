@@ -29,7 +29,7 @@ def get_hh_vacancies(language):
 
 def get_hh_total_statistic(vacancies_pages, vacancies_quantity):
     salaries = []
-    vacancies_total = {}
+    vacancies_statistic = {}
     vacancies = []
     for vacancies_page in vacancies_pages:
         vacancies.extend(vacancies_page['items'])
@@ -48,8 +48,8 @@ def get_hh_total_statistic(vacancies_pages, vacancies_quantity):
     except ZeroDivisionError:
         average_salary = 0
     vacancies_processed = len(salaries)
-    vacancies_total['vacancies_found'] = vacancies_quantity
-    vacancies_total['vacancies_processed'] = vacancies_processed
-    vacancies_total['average_salary'] = average_salary
+    vacancies_statistic['vacancies_found'] = vacancies_quantity
+    vacancies_statistic['vacancies_processed'] = vacancies_processed
+    vacancies_statistic['average_salary'] = average_salary
 
-    return vacancies_total
+    return vacancies_statistic
