@@ -26,7 +26,7 @@ def get_sj_vacancies(language, api_key):
         response.raise_for_status()
         response_json = response.json()
         vacancy_pages.append(response_json)
-        print(response_json['total'], response_json['more'])
+
 
         if response_json['more']:
             page += 1
