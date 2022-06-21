@@ -27,7 +27,6 @@ def get_sj_vacancies(language, api_key):
         response_json = response.json()
         vacancy_pages.append(response_json)
 
-
         if response_json['more']:
             page += 1
             pages_number += 1
@@ -40,11 +39,11 @@ def get_sj_vacancies(language, api_key):
 def get_sj_total_statistic(vacancies_pages, vacancies_quantity):
     salaries = []
     vacancies_total = {}
-    vacancies_list = []
+    vacancies = []
     for vacancies_page in vacancies_pages:
-        vacancies_list.extend(vacancies_page['objects'])
+        vacancies.extend(vacancies_page['objects'])
 
-    for vacancy in vacancies_list:
+    for vacancy in vacancies:
         if vacancy['currency'] == 'rub':
             salary = predict_rub_salary(
                 vacancy['payment_from'],

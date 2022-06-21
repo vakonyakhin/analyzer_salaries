@@ -30,11 +30,11 @@ def get_hh_vacancies(language):
 def get_hh_total_statistic(vacancies_pages, vacancies_quantity):
     salaries = []
     vacancies_total = {}
-    vacancies_list = []
+    vacancies = []
     for vacancies_page in vacancies_pages:
-        vacancies_list.extend(vacancies_page['items'])
+        vacancies.extend(vacancies_page['items'])
 
-    for vacancy in vacancies_list:
+    for vacancy in vacancies:
         if vacancy['salary'] is not None \
               and vacancy['salary']['currency'] == 'RUR':
             salary = predict_rub_salary(
