@@ -24,15 +24,15 @@ def get_sj_vacancies(language, api_key):
         params['page'] = page
         response = requests.get(url, params=params, headers=header)
         response.raise_for_status()
-        response_json = response.json()
-        vacancy_pages.append(response_json)
+        raw_response = response.json()
+        vacancy_pages.append(raw_response)
 
-        if response_json['more']:
+        if raw_response['more']:
             page += 1
             pages_number += 1
         else:
             break
-    vacancies_quantity = response_json['total']
+    vacancies_quantity = raw_response['total']
     return vacancy_pages, vacancies_quantity
 
 
